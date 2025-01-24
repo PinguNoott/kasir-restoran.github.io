@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Edit</title>
-   <style>
+    <title>Form Tambah Barang</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+    <style>
     body {
         font-family: 'Baloo 2', cursive;
         margin: 0;
@@ -128,29 +130,51 @@
         }
     }
 </style>
+
 </head>
 <body>
     <div class="form-container">
-        <h2>Form Edit User</h2>
-        <form action="<?= base_url('home/aksi_e_user') ?>" method="post">
-            <label for="nama">Username</label>
-            <input type="text" id="nama" name="nama" value="<?=$a->username?>" required>
-
-          <label for="no_telp">No Telp</label>
-            <input type="text" id="no_telp" name="no_telp" value="<?=$a->no_telp?>" required>
-
-<select name="level" id="level" required>
-    <option value="1" <?= $a->level == 1 ? 'selected' : '' ?>>User</option>
-    <option value="0" <?= $a->level == 0 ? 'selected' : '' ?>>Admin</option>
-</select>
-
-
-            <button type="submit" input type="hidden" name="id" value="<?=$a->id_user?>">
->Submit</button>
+        <h2>Tambah Barang</h2>
+        <form action="<?= base_url('home/aksi_t_barang') ?>" method="post" enctype="multipart/form-data">
+            
+            <!-- Nama Barang -->
+            <label for="nama_barang">Nama</label>
+            <input type="text" id="nama_barang" name="nama" placeholder="Masukkan Nama Barang" required>
+            
+            <!-- Harga Beli -->
+            <label for="harga">Harga</label>
+            <input type="text" id="harga" name="hb" placeholder="Masukkan Harga" required>
+     
+          <div class="form-group">
+    <label for="kategori">Kategori</label>
+    <select name="kategori" id="kategori" class="form-control" required>
+        <option value="Makanan">Makanan</option>
+        <option value="Minuman">Minuman</option>
+        <option value="Camilan">Camilan</option>
+        <option value="Dessert">Dessert</option>
+    </select>
+</div>
+            
+            <!-- Gambar -->
+            <label for="gambar">Foto</label>
+            <div class="file-input">
+                <input type="file" id="gambar" name="foto" required>
+                <label for="gambar" class="file-label">Pilih file gambar</label>
+            </div>
+            
+            <!-- Diskon -->
+    <label for="diskon">Diskon (%):</label>
+    <input type="text" id="diskon" name="diskon" min="0" max="100" value="<?= isset($barang->diskon) ? $barang->diskon : '' ?>" required>
+            
+            <!-- Tombol Submit -->
+            <button type="submit">Tambah</button>
         </form>
+        
+        <!-- Tombol Kembali -->
         <div class="form-footer">
-            <a href="<?= base_url('home/user') ?>">Kembali</a>
+            <a href="<?= base_url('home/barang') ?>">Kembali</a>
         </div>
     </div>
 </body>
+
 </html>

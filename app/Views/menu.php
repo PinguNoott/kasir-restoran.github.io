@@ -42,52 +42,91 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                         <!-- Dashboard -->
+                        
+                        <!-- Dashboard -->
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="<?= base_url('home/dashboard') ?>" aria-expanded="false">
+                               href="<?= base_url('home/dashboard') ?>" aria-expanded="false">
                                 <i class="me-3 fa fa-tachometer-alt" aria-hidden="true"></i>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
-  <?php
-if (session()->get('level') == 'kepsek') {
-?>
+
+                                 <!-- Order -->
+                      <li class="sidebar-item">
+    <a class="sidebar-link waves-effect waves-dark sidebar-link"
+       href="<?= base_url('home/order') ?>" aria-expanded="false">
+        <!-- Replace with food-related icon, e.g., utensils for food -->
+        <i class="me-3 fa fa-utensils" aria-hidden="true"></i>
+        <span class="hide-menu">Menu</span> 
+    </a>
+</li>
+
                         <!-- User -->
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="<?= base_url('home/user') ?>" aria-expanded="false">
+                               href="<?= base_url('home/user') ?>" aria-expanded="false">
                                 <i class="me-3 fa fa-users" aria-hidden="true"></i>
                                 <span class="hide-menu">User</span>
                             </a>
                         </li>
 
-                        <!-- Pengumuman -->
+                        <!-- Barang -->
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="<?= base_url('home/pengumuman') ?>" aria-expanded="false">
+                               href="<?= base_url('home/barang') ?>" aria-expanded="false">
+                                <i class="me-3 fa fa-box" aria-hidden="true"></i>
+                                <span class="hide-menu">Barang</span>
+                            </a>
+                        </li>
+
+                        <!-- Transaksi -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                               href="<?= base_url('home/transaksi') ?>" aria-expanded="false">
                                 <i class="me-3 fa fa-bullhorn" aria-hidden="true"></i>
-                                <span class="hide-menu">Pengumuman</span>
+                                <span class="hide-menu">Transaksi</span>
                             </a>
                         </li>
 
-                        <!-- Log -->
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="<?= base_url('home/log') ?>" aria-expanded="false">
-                                <i class="me-3 fa fa-clipboard-list" aria-hidden="true"></i>
-                                <span class="hide-menu">Log</span>
-                            </a>
-                        </li>
-<?php
-}else{
+                       <!-- Restore -->
+<li class="sidebar-item">
+    <a class="sidebar-link waves-effect waves-dark" href="javascript:void(0);" aria-expanded="false">
+        <!-- Update to a more relevant icon for Restore -->
+        <i class="me-3 fa fa-undo" aria-hidden="true"></i> 
+        <span class="hide-menu">Restore</span>
+    </a>
+    <ul class="collapse first-level">
+        <li class="sidebar-item">
+            <a href="<?= base_url('home/ruser') ?>" class="sidebar-link">
+                <i class="fa fa-user me-3" aria-hidden="true"></i>
+                <span class="hide-menu">Restore User</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a href="<?= base_url('home/rbarang') ?>" class="sidebar-link">
+                <i class="fa fa-cogs me-3" aria-hidden="true"></i>
+                <span class="hide-menu">Restore Barang</span>
+            </a>
+        </li>
+    </ul>
+</li>
 
-}
-?>
+<!-- Setting -->
+<li class="sidebar-item">
+    <a class="sidebar-link waves-effect waves-dark sidebar-link"
+       href="<?= base_url('home/setting') ?>" aria-expanded="false">
+        <!-- Update to a more relevant icon for Settings -->
+        <i class="me-3 fa fa-cogs" aria-hidden="true"></i> 
+        <span class="hide-menu">Setting</span>
+    </a>
+</li>
+
+
                         <!-- Logout -->
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="<?= base_url('home/logout') ?>" aria-expanded="false">
+                               href="<?= base_url('home/logout') ?>" aria-expanded="false">
                                 <i class="me-3 fa fa-sign-out-alt" aria-hidden="true"></i>
                                 <span class="hide-menu">Logout</span>
                             </a>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Edit</title>
-   <style>
+    <title>Form Edit Barang</title>
+    <style>
     body {
         font-family: 'Baloo 2', cursive;
         margin: 0;
@@ -131,26 +131,43 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>Form Edit User</h2>
-        <form action="<?= base_url('home/aksi_e_user') ?>" method="post">
-            <label for="nama">Username</label>
-            <input type="text" id="nama" name="nama" value="<?=$a->username?>" required>
+        <form action="<?= base_url('home/aksi_e_barang') ?>" method="post" enctype="multipart/form-data">
+            <!-- Nama Barang -->
+            <label for="nama_barang">Nama</label>
+            <input type="text" id="nama_barang" name="nama" value="<?= $barang->nama_barang ?>" placeholder="Masukkan Nama Barang" required>
 
-          <label for="no_telp">No Telp</label>
-            <input type="text" id="no_telp" name="no_telp" value="<?=$a->no_telp?>" required>
+            <!-- Harga Beli -->
+            <label for="harga">Harga</label>
+            <input type="text" id="harga" name="hb" value="<?= $barang->harga ?>" placeholder="Masukkan Harga" required>
 
-<select name="level" id="level" required>
-    <option value="1" <?= $a->level == 1 ? 'selected' : '' ?>>User</option>
-    <option value="0" <?= $a->level == 0 ? 'selected' : '' ?>>Admin</option>
-</select>
+         <div class="form-group">
+    <label for="kategori">Kategori</label>
+    <select name="kategori" id="kategori"  value="<?= $barang->kategori ?>"class="form-control" required>
+        <option value="Makanan">Makanan</option>
+        <option value="Minuman">Minuman</option>
+        <option value="Camilan">Camilan</option>
+        <option value="Dessert">Dessert</option>
+    </select>
+</div>
 
+<!-- Foto -->
+<label for="foto">Foto (Leave blank if no new photo)</label>
+<input type="file" id="foto" name="foto">
+<input type="hidden" name="foto_lama" value="<?= $barang->foto ?>"> <!-- Foto lama -->
 
-            <button type="submit" input type="hidden" name="id" value="<?=$a->id_user?>">
->Submit</button>
+            <!-- Diskon -->
+    <label for="diskon">Diskon (%):</label>
+    <input type="text" id="diskon" name="diskon" min="0" max="100" value="<?= isset($barang->diskon) ? $barang->diskon : '' ?>" required>
+
+          
+           
+            <button type="submit" input type="hidden" name="id" value="<?=$barang->id_barang?>">
+Submit</button>
         </form>
         <div class="form-footer">
-            <a href="<?= base_url('home/user') ?>">Kembali</a>
+            <a href="<?= base_url('home/barang') ?>">Kembali</a>
         </div>
     </div>
 </body>
+
 </html>

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cute Table</title>
-    <!-- Link Google Font (Baloo 2) -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap">
-   <style>
+    <title>Tabel Menu</title>
+    <!-- Link Google Font (Poppins) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <style>
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #F0F9FF; /* Light blue background */
@@ -89,52 +89,59 @@
     </style>
 </head>
 <body>
-   <div class="content">
-        <div class="table-title">Tabel User</div>
+    <div class="content">
+        <div class="table-title">Restore Barang</div>
         
-        <button type="button" class="btn btn-success" onclick="window.location.href='<?= base_url('home/tambahuser') ?>'">Tambah</button>
+        <button type="button" class="btn btn-success" onclick="window.location.href='<?= base_url('home/tambahbarang') ?>'">Tambah</button>
 
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Username</th>
-                    <th>No Telp</th>
-                    <th>Level</th>
+                    <th>Nama</th>
+                    <th>Harga</th>
+                    <th>Kategori</th>
+                    <th>Diskon</th>
+                    <th>Foto</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if (!empty($desta)): ?>
-                    <?php 
-                    $no = 1;
-                    foreach ($desta as $satu): 
-                    ?>
-                    <tr>
-                        <td><?= $no++ ?></td>
-                        <td><?= esc($satu['username']); ?></td>
-                        <td><?= esc($satu['no_telp']); ?></td>
-                        <td>
-                            <?= ($satu['level'] == 1) ? 'User' : 'Admin'; ?>
+                <?php if (!empty($barangData)): ?>
+                    <?php $no = 1; foreach ($barangData as $barang): ?>
+                        <tr>
+                            <td><?= $no++ ?></td>
+                            <td><?= esc($barang->nama_barang) ?></td>
+                            <td>Rp <?= number_format($barang->harga, 2, ',', '.') ?></td>
+                            <td><?= esc($barang->kategori) ?></td>
+                            <td><?= esc($barang->diskon) ?></td>
+                            <td>
+                                <?php if ($barang->foto): ?>
+                                    <img src="<?= base_url('images/'.$barang->foto) ?>" alt="Image" width="100">
+                                <?php else: ?>
+                                    <img src="<?= base_url('images/default.jpg') ?>" alt="No image available" width="100">
+                                <?php endif; ?>
+                            </td>
+                             <td>
+                          <a href="<?= base_url('home/restore_barang/'.$barang['id_barang']); ?>">
+    <button class="btn btn-primary">Restore</button>
+</a>
+
+                           <a href="<?= base_url('home/hapus_barang2/' . $sbarang['id_barang']); ?>" 
+   onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+   <button class="btn btn-danger">Hapus Permanen</button>
+</a>
                         </td>
-                        <td>
-                            <a href="<?= base_url('home/edituser/'.$satu['id_user']); ?>">
-                                <button class="btn btn-primary">Edit</button>
-                            </a>
-                            <a href="<?= base_url('home/hapususer?id=' . $satu['id_user']); ?>" 
-                               onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                               <button class="btn btn-danger">Hapus</button>
-                            </a>
-                        </td>
-                    </tr>
+                        </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <tr><td colspan="5">Tidak ada data.</td></tr>
+                    <tr>
+                        <td colspan="7">Data tidak ditemukan.</td>
+                    </tr>
                 <?php endif; ?>
             </tbody>
         </table>
     </div>
-</div>
 </body>
 
 </html>

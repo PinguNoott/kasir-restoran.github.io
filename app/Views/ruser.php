@@ -90,7 +90,7 @@
 </head>
 <body>
    <div class="content">
-        <div class="table-title">Tabel User</div>
+        <div class="table-title">Restore User</div>
         
         <button type="button" class="btn btn-success" onclick="window.location.href='<?= base_url('home/tambahuser') ?>'">Tambah</button>
 
@@ -118,13 +118,14 @@
                             <?= ($satu['level'] == 1) ? 'User' : 'Admin'; ?>
                         </td>
                         <td>
-                            <a href="<?= base_url('home/edituser/'.$satu['id_user']); ?>">
-                                <button class="btn btn-primary">Edit</button>
-                            </a>
-                            <a href="<?= base_url('home/hapususer?id=' . $satu['id_user']); ?>" 
-                               onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                               <button class="btn btn-danger">Hapus</button>
-                            </a>
+                          <a href="<?= base_url('home/restore_user/'.$satu['id_user']); ?>">
+    <button class="btn btn-primary">Restore</button>
+</a>
+
+                           <a href="<?= base_url('home/hapus_user2/' . $satu['id_user']); ?>" 
+   onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+   <button class="btn btn-danger">Hapus Permanen</button>
+</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>

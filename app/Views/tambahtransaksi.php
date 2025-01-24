@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Edit</title>
-   <style>
+    <title>Form Tambah Transaksi</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+    <style>
     body {
         font-family: 'Baloo 2', cursive;
         margin: 0;
@@ -131,26 +133,39 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>Form Edit User</h2>
-        <form action="<?= base_url('home/aksi_e_user') ?>" method="post">
-            <label for="nama">Username</label>
-            <input type="text" id="nama" name="nama" value="<?=$a->username?>" required>
+        <h2>Form Tambah Transaksi</h2>
+        <form action="<?= base_url('home/aksi_t_transaksi') ?>" method="post">
+  
+            <!-- Nama Pembeli -->
+            <label for="nama_pembeli">Nama Pembeli</label>
+            <input type="text" id="nama_pembeli" name="nama_pembeli" placeholder="Masukkan nama pembeli" required>
 
-          <label for="no_telp">No Telp</label>
-            <input type="text" id="no_telp" name="no_telp" value="<?=$a->no_telp?>" required>
+            <!-- Total Harga (Calculated) -->
+            <label for="total_harga">Total Harga</label>
+            <input type="text" id="harga" name="harga" placeholder="Total harga transaksi" required>
 
-<select name="level" id="level" required>
-    <option value="1" <?= $a->level == 1 ? 'selected' : '' ?>>User</option>
-    <option value="0" <?= $a->level == 0 ? 'selected' : '' ?>>Admin</option>
-</select>
+       <!-- Jumlah -->
+            <label for="jumlah">Jumlah</label>
+            <input type="text" id="jumlah" name="jumlah" placeholder="Masukkan jumlah transaksi" required>
 
+            <!-- Tanggal Transaksi -->
+            <label for="tanggal_transaksi">Tanggal Transaksi</label>
+            <input type="date" id="tanggal_transaksi" name="tanggal" required>
 
-            <button type="submit" input type="hidden" name="id" value="<?=$a->id_user?>">
->Submit</button>
+            <!-- Status Transaksi -->
+            <label for="status">Status</label>
+            <select id="status" name="status" required>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+            </select>
+
+            <button type="submit">Submit</button>
         </form>
         <div class="form-footer">
-            <a href="<?= base_url('home/user') ?>">Kembali</a>
+            <a href="<?= base_url('home/dashboard') ?>">Kembali ke Dashboard</a>
         </div>
     </div>
 </body>
+
 </html>

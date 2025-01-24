@@ -9,9 +9,9 @@
     <meta name="keywords" content="admin dashboard, html css dashboard, bootstrap 5 admin, responsive admin template">
     <meta name="description" content="Admin Dashboard Template built with Bootstrap 5">
     <meta name="robots" content="noindex,nofollow">
-    <title>Pengumuman</title>
+    <title>Kasir Restoran</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" href="<?= base_url('images/miaw.png') ?>">
+    <link rel="icon" type="image/png" href="<?= base_url('images/bubble.jpeg') ?>">
     <!-- Chartist CSS -->
     <link href="<?= base_url('assets/plugins/chartist/dist/chartist.min.css') ?>" rel="stylesheet">
     <!-- Custom CSS -->

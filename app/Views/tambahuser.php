@@ -4,115 +4,132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Tambah User</title>
-    <!-- Link Google Font -->
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Baloo 2', cursive;
-            margin: 0;
-            padding: 0;
-            background-color: #E3F2FD; /* Light blue background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+   <style>
+    body {
+        font-family: 'Baloo 2', cursive;
+        margin: 0;
+        padding: 0;
+        background-color: #F0F9FF; /* Biru lembut */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        box-sizing: border-box;
+    }
+
+    .form-container {
+        background: #FFFFFF;
+        padding: 15px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 600px;
+        box-sizing: border-box;
+        border: 1px solid #4DA8FF; /* Biru lembut */
+    }
+
+    h2 {
+        text-align: center;
+        color: #4DA8FF;
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-size: 12px;
+        color: #4DA8FF; /* Biru lembut */
+        font-weight: bold;
+        display: block;
+        margin: 8px 0 3px;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+        width: 48%;
+        padding: 6px;
+        margin: 4px 1%;
+        border: 1px solid #4DA8FF; /* Biru lembut */
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 12px;
+        color: #555;
+        display: inline-block;
+        background-color: #F0F9FF; /* Biru lembut */
+    }
+
+    textarea {
+        min-height: 70px;
+        resize: none;
+    }
+
+    .file-input {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        margin: 8px 0;
+        border: 1px dashed #4DA8FF; /* Biru lembut */
+        border-radius: 8px;
+        background-color: #F0F9FF;
+        cursor: pointer;
+        text-align: center;
+        font-size: 12px;
+        color: #4DA8FF;
+    }
+
+    .file-input:hover {
+        background-color: #CCE7FF; /* Hover effect biru muda */
+    }
+
+    button {
+        width: 48%;
+        padding: 8px;
+        background-color: #4DA8FF;
+        color: white;
+        font-size: 14px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        margin: 8px 1%;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background-color: #3A90E6;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-footer {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .form-footer a {
+        text-decoration: none;
+        color: #4DA8FF;
+        font-size: 12px;
+    }
+
+    .form-footer a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        input[type="text"],
+        textarea,
+        button {
+            width: 100%;
         }
 
         .form-container {
-            background: #fff;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
+            width: 90%;
         }
-
-        h2 {
-            text-align: center;
-            color: #1976D2;
-            margin-bottom: 20px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        label {
-            font-size: 14px;
-            color: #1976D2;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"],
-        select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #1976D2;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 14px;
-            color: #555;
-        }
-
-        input[type="text"]::placeholder {
-            color: #1976D2;
-        }
-
-        select {
-            background-color: white;
-            appearance: none;
-            cursor: pointer;
-            position: relative;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #1976D2;
-            color: white;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #1565C0;
-            box-shadow: 0 4px 10px rgba(25, 118, 210, 0.4);
-        }
-
-        .form-footer {
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .form-footer a {
-            text-decoration: none;
-            color: #1976D2;
-            font-size: 14px;
-        }
-
-        .form-footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            .form-container {
-                padding: 15px;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            button {
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
     <div class="form-container">
@@ -121,21 +138,13 @@
             <label for="nama">Username</label>
             <input type="text" id="nama" name="nama" placeholder="Masukkan username" required>
 
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="Masukkan email" required>
+            <label for="no_telp">No Telp</label>
+            <input type="text" id="no_telp" name="no_telp" placeholder="Masukkan Nommor Telp" required>
 
-            <label for="pass">Password</label>
-            <input type="text" id="pass" name="pass" placeholder="Masukkan password" required>
-
-            <label for="pass">No Telp</label>
-            <input type="text" id="telp" name="telp" placeholder="Masukkan nomor telepon" required>
-            
             <label for="level">Level</label>
             <select id="level" name="level" required>
-                <option value="1">Kepsek</option>
-                <option value="2">Guru</option>
-                <option value="3">Siswa</option>
-                <option value="4">Ortu</option>
+                <option value="1">User</option>
+                <option value="2">Admin</option>
             </select>
 
             <button type="submit">Submit</button>
