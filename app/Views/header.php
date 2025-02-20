@@ -9,9 +9,14 @@
     <meta name="keywords" content="admin dashboard, html css dashboard, bootstrap 5 admin, responsive admin template">
     <meta name="description" content="Admin Dashboard Template built with Bootstrap 5">
     <meta name="robots" content="noindex,nofollow">
-    <title>Kasir Restoran</title>
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" href="<?= base_url('images/bubble.jpeg') ?>">
+
+  <?php
+$setting = $setting ?? []; // Pastikan tidak error jika data tidak ada
+?>
+<title><?= esc($setting['judul_website'] ?? 'My Website') ?></title>
+<link rel="icon" type="image/png" href="<?= base_url(!empty($setting['logo_website']) ? $setting['logo_website'] : 'images/miaw.png') ?>">
+
+
     <!-- Chartist CSS -->
     <link href="<?= base_url('assets/plugins/chartist/dist/chartist.min.css') ?>" rel="stylesheet">
     <!-- Custom CSS -->

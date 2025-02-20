@@ -68,31 +68,35 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>Edit User</h2>
-        <form action="<?= base_url('home/aksi_e_user') ?>" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="id" value="<?= $a->id_user ?>">
+        <h2>Edit Tugas</h2>
+        <form action="<?= base_url('home/aksi_e_tugas') ?>" method="post">
+            <input type="hidden" name="id_tugas" value="<?= $a->id_tugas ?>">
 
-            <label for="nama">Username</label>
-            <input type="text" id="nama" name="nama" value="<?= $a->username ?>" required>
+            <label for="nama_tugas">Nama Tugas</label>
+            <input type="text" id="nama_tugas" name="nama_tugas" value="<?= $a->nama_tugas ?>" required>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" value="<?= $a->password ?>" required>
-
-            <label for="level">Level</label>
-            <select id="level" name="level" required>
-                <option value="1" <?= $a->level == 1 ? 'selected' : '' ?>>User</option>
-                <option value="2" <?= $a->level == 2 ? 'selected' : '' ?>>Admin</option>
+            <label for="prioritas">Prioritas</label>
+            <select id="prioritas" name="prioritas" required>
+                <option value="Rendah" <?= $a->prioritas == 'Rendah' ? 'selected' : '' ?>>Rendah</option>
+                <option value="Sedang" <?= $a->prioritas == 'Sedang' ? 'selected' : '' ?>>Sedang</option>
+                <option value="Tinggi" <?= $a->prioritas == 'Tinggi' ? 'selected' : '' ?>>Tinggi</option>
             </select>
 
-            <label for="foto">Foto (Biarkan kosong jika tidak ingin mengubah)</label>
-            <input type="file" id="foto" name="foto">
-            <input type="hidden" name="foto_lama" value="<?= $a->foto ?>">
+            <label for="status">Status</label>
+            <select id="status" name="status" required>
+                <option value="Belum Selesai" <?= $a->status == 'Belum Selesai' ? 'selected' : '' ?>>Belum Selesai</option>
+                <option value="Selesai" <?= $a->status == 'Selesai' ? 'selected' : '' ?>>Selesai</option>
+            </select>
+
+            <label for="tanggal">Tanggal</label>
+            <input type="date" id="tanggal" name="tanggal" value="<?= $a->tanggal ?>" required>
 
             <button type="submit">Submit</button>
         </form>
         <div class="form-footer">
-            <a href="<?= base_url('home/user') ?>">Kembali</a>
+            <a href="<?= base_url('home/tugas') ?>">Kembali</a>
         </div>
     </div>
 </body>
+
 </html>

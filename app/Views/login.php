@@ -95,46 +95,45 @@
                 <div class="login-container">
                     <div class="d-flex justify-content-center py-4">
                         <a href="<?= base_url('index.html') ?>" class="logo d-flex align-items-center w-auto">
-                            <img src="<?= base_url('images/miaw.png') ?>" alt="PetMate Logo" style="max-width: 100px;">
+                        <?php
+$setting = $setting ?? [];
+?>
+<img src="<?= base_url(!empty($setting['logo_login']) ? $setting['logo_login'] : 'images/miaw.png') ?>" alt="Logo Login">
+
                         </a>
                     </div>
 
-                    <div class="card-body shadow-lg p-4" style="max-width: 400px; margin: auto; border-radius: 10px;">
-                        <div class="pt-4 pb-2 text-center">
-                            <h5 class="card-title mb-3">Login</h5>
+                    <div class="card-body">
+                        <div class="pt-4 pb-2">
+                            <h5 class="card-title">Login</h5>
                         </div>
 
                         <!-- Menampilkan pesan kesalahan jika ada -->
                         <?php if (session()->getFlashdata('error')): ?>
-                            <div class="alert alert-danger text-center" role="alert">
+                            <div class="alert alert-danger invalid-feedback">
                                 <?= session()->getFlashdata('error') ?>
                             </div>
                         <?php endif; ?>
 
-                        <!-- Form Login -->
                         <form class="row g-3 needs-validation" novalidate action="<?= base_url('home/aksilogin') ?>" method="POST">
-                            <!-- Username -->
                             <div class="col-12">
                                 <label for="yourUsername" class="form-label">Username</label>
-                                <input type="text" name="username" class="form-control" id="yourUsername" placeholder="Masukkan username" required>
+                                <input type="text" name="username" class="form-control" id="yourUsername" required>
                             </div>
 
-                            <!-- Nomor Telepon -->
+                         
+
                             <div class="col-12">
-                                <label for="yourNotelp" class="form-label">Nomor Telepon</label>
-                                <input type="tel" name="no_telp" class="form-control" id="yourNotelp" placeholder="Masukkan nomor telepon" pattern="[0-9]{10,15}" required>
+                                <label for="yourPassword" class="form-label">Password</label>
+                                <input type="password" name="password" class="form-control" id="yourPassword" required>
                             </div>
 
-                            <!-- Tombol Login -->
                             <div class="col-12">
-                                <button class="btn btn-primary w-100" type="submit">Login</button>
+                                <button class="btn btn-primary" type="submit">Login</button>
                             </div>
 
-                            <!-- Link ke Signup -->
                             <div class="col-12">
-                                <p class="small mb-0 text-center">
-                                    Belum punya akun? <a href="<?= base_url('home/signup') ?>">Daftar di sini</a>
-                                </p>
+                                <p class="small mb-0 text-center">Don't have an account? <a href="<?= base_url('home/signup') ?>">Create an account</a></p>
                             </div>
                         </form>
                     </div>
@@ -142,9 +141,6 @@
             </section>
         </div>
     </main>
-
-   
 </body>
-
 
 </html>

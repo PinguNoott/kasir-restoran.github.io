@@ -87,6 +87,7 @@
         }
     </style>
 </head>
+
 <body>
     <main>
         <div class="container">
@@ -105,7 +106,7 @@
 
                         <!-- Menampilkan pesan kesalahan jika ada -->
                         <?php if (session()->getFlashdata('error')): ?>
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger invalid-feedback">
                                 <?= session()->getFlashdata('error') ?>
                             </div>
                         <?php endif; ?>
@@ -113,13 +114,16 @@
                         <form class="row g-3 needs-validation" novalidate action="<?= base_url('home/aksi_signup') ?>" method="POST">
                             <div class="col-12">
                                 <label for="yourUsername" class="form-label">Username</label>
-                                <input type="text" name="username" class="form-control" id="yourUsername" required>
+                                    <input type="text" name="username" class="form-control" id="yourUsername" required>
+                                </div>
                             </div>
 
                             <div class="col-12">
-                                <label for="yourNotelp" class="form-label">No Telp</label>
-                                <input type="text" name="no_telp" class="form-control" id="yourNotelp" required>
+                                <label for="yourPassword" class="form-label">Password</label>
+                                <input type="password" name="password" class="form-control" id="yourPassword" required>
                             </div>
+
+                            <!-- Level input removed since it's automatically set to "1" -->
 
                             <div class="col-12">
                                 <button class="btn btn-primary w-100" type="submit">Sign Up</button>
@@ -134,5 +138,4 @@
         </div>
     </main>
 </body>
-
 </html>

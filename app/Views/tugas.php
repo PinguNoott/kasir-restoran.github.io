@@ -88,49 +88,62 @@
     </style>
 </head>
 <body>
-   <div class="content">
-        <div class="table-title">Tabel User</div>
-        <button type="button" class="btn btn-success" onclick="window.location.href='<?= base_url('home/tambahuser') ?>'">Tambah</button>
+
+<div class="content">
+    <div class="table-title">Tabel Tugas</div>
+
+    <!-- Total Tugas -->
+    <div class="total-tugas">Total Tugas: <span id="totalTugas"><?= count($desta) ?></span></div>
+
+        <!-- Form Pencarian -->
+        <form method="GET" action="<?= base_url('home/tugas') ?>">
+            <input type="text" name="keyword" placeholder="Cari Nama Tugas..." value="<?= isset($_GET['keyword']) ? $_GET['keyword'] : '' ?>">
+            <button type="submit" class="btn btn-primary">Cari</button>
+            <a href="<?= base_url('home/tugas') ?>" class="btn btn-secondary">Reset</a>
+        </form>
+
+        <button type="button" class="btn btn-success" onclick="window.location.href='<?= base_url('home/tambahtugas') ?>'">Tambah</button>
 
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>Level</th>
-                    <th>Foto</th>
+                    <th>Nama Tugas</th>
+                    <th>Prioritas</th>
+                    <th>Status</th>
+                    <th>Tanggal</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $no = 1;
-                foreach ($desta as $user) { ?>
+                foreach ($desta as $tugas) { ?>
                 <tr>
                     <td><?= $no++ ?></td>
-                    <td><?= $user->username ?></td>
-                      <td><?= $user->password ?></td>
-                    <td><?= $user->level == '1' ? 'Admin' : 'User' ?></td>
-                   <td>
-    <?php if (!empty($user->foto)) : ?>
-        <img src="<?= base_url('images/' . $user->foto) ?>" width="50" height="50" alt="Foto User">
-    <?php else : ?>
-        Tidak ada foto
-    <?php endif; ?>
-</td>
+                    <td><?= $tugas->nama_tugas ?></td>
+                    <td><?= $tugas->prioritas ?></td>
+                    <td><?= $tugas->status ?></td>
+                    <td><?= date('d-m-Y', strtotime($tugas->tanggal)) ?></td>
                     <td>
-                        <a href="<?= base_url('home/edituser/' . $user->id_user) ?>">
-                            <button class="btn btn-primary">Edit</button>
-                        </a>
-                        <a href="<?= base_url('home/hapususer/' . $user->id_user) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                            <button class="btn btn-danger">Hapus</button>
-                        </a>
-                    </td>
+    <a href="<?= base_url('home/edittugas/' . $tugas->id_tugas . '?keyword=' . urlencode($_GET['keyword'] ?? '')) ?>">
+        <button class="btn btn-primary">Edit</button>
+    </a>
+    <a href="<?= base_url('home/hapustugas/' . $tugas->id_tugas . '?keyword=' . urlencode($_GET['keyword'] ?? '')) ?>" 
+       onclick="return confirm('Apakah Anda yakin ingin menghapus tugas ini?')">
+        <button class="btn btn-danger">Hapus</button>
+    </a>
+</td>
                 </tr>
                 <?php } ?>
             </tbody>
         </table>
     </div>
 </body>
+
+
+</body>
+</html>
+
+
 </html>
